@@ -18,6 +18,8 @@ function App() {
 
 export default App;
 
+// Make sure to open Chrome with: open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
+// On Mac
 
-
-// API is sending the entire HTML page, fix and make sure it only sends then data
+// On windows open it with:
+// chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
