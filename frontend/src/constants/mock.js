@@ -31,7 +31,7 @@ export const mockSearchResults = {
 export const mockCompanyDetails = {
   country: "US",
   currency: "USD",
-  exchange: "NASDAQ/NMS (GLOBAL MARKET)",
+  Price: "226",
   ipo: "1980-12-12",
   marketCapitalization: 1415993,
   name: "Apple Inc",
