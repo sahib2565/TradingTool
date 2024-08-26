@@ -5,7 +5,7 @@ import Card from "./Card";
 const Details = ({ details }) => {
   const { darkMode } = useContext(ThemeContext);
   const [target, setTarget] = useState(0);
-  const [change, setChange] = useState("");
+  const [change, setChange] = useState(0);
 
   const detailsList = {
     name: "Name",
@@ -57,6 +57,7 @@ const Details = ({ details }) => {
     >
       <input
         type = "text"
+        inputmode="numeric"
         value={change}
         placeholder="Wished % profit"
         class = {`w-full px-4 py-2 focus:outline-none rounded-md ${
