@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect,  } from "react";
-import { mockHistoricalData } from "../constants/mock";
 import { convertUnixTimestampToDate } from "../utils/helpers/date-helper";
 import {
   Area,
@@ -15,14 +14,16 @@ import ChartFilter from "./ChartFilter";
 import ThemeContext from "../context/ThemeContext";
 import { fetchHistoricalData } from "../api/stock-api";
 import StockContext from "../context/StockContext";
+import OrderContext from "../context/OrderContext";
 
 const Chart = () => {
-  const [data, setData] = useState(mockHistoricalData);
+  const [data, setData] = useState({});
 
   const [filter, setFilter] = useState("5D");
 
   const { darkMode } = useContext(ThemeContext);
   const { stockSymbol } = useContext(StockContext);
+  const { setOrder } = useContext(OrderContext);
 
 
   useEffect(() => {
@@ -47,6 +48,11 @@ const Chart = () => {
       };
     });
   };
+
+  const upgradeOrder = (payload) => {
+    console.log(payload.payload.value);
+    setOrder(payload.payload.value);
+  }
 
   return (
     <Card>
@@ -79,7 +85,7 @@ const Chart = () => {
               />
             </linearGradient>
           </defs>
-          <Area // activeDot={{ onClick: (event, payload) => console.log(payload.payload.value) }}
+          <Area activeDot={{ onClick: (event,payload) => upgradeOrder(payload) }}// activeDot={{ onClick: (event, payload) => console.log(payload.payload.value) }}
             type="monotone"
             dataKey="value"
             stroke="#312e81"

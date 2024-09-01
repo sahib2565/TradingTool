@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import ThemeContext from "../context/ThemeContext";
 import Card from "./Card";
+import OrderContext from "../context/OrderContext";
 
 const Details = ({ details }) => {
   const { darkMode } = useContext(ThemeContext);
+  const { order } = useContext(OrderContext);
   const [target, setTarget] = useState(0);
   const [change, setChange] = useState(0);
 
@@ -11,7 +13,7 @@ const Details = ({ details }) => {
     name: "Name",
     country: "Country",
     currency: "Currency",
-    Price: "B/S Price",
+    // Price: "B/S Price",
     //ipo: "IPO Date",
     //marketCapitalization: "Market Capitalization",
     //finnhubIndustry: "Industry",
@@ -21,8 +23,8 @@ const Details = ({ details }) => {
     // const value = "1.2"
     const v = parseFloat(value);
     // console.log(`Price: 226`);
-    const solution = 226*((100+v)/100);
-    setTarget(solution);
+    const solution = order*((100+v)/100);
+    setTarget(solution.toFixed(2));
     // console.log(`The target is: ${target_res}`);
   }
 
@@ -48,6 +50,10 @@ const Details = ({ details }) => {
             </li>
           );
         })}
+        <li className="flex-1 flex justify-between items-center">
+        <span>B/S Price</span>
+        <span className="font-bold">{order}</span>
+        </li>
       </ul>
       <div className = {`flex-1 flex justify-between items-center`}>
       <div
@@ -64,6 +70,10 @@ const Details = ({ details }) => {
           darkMode ? "bg-gray-900" : null
         }`}
         onChange={(event) => setChange(event.target.value)}
+        onKeyPress={(event) => {
+          if (event.key === "Enter") {
+            updateChange();
+          }}}
       />
       <button
         className="h-8 w-8 bg-indigo-600 rounded-md flex justify-center items-center m-1 p-2"
@@ -72,7 +82,7 @@ const Details = ({ details }) => {
       </button>
       </div>
       <h1
-        className="inline-block"
+        className="inline-block pl-5"
       >{target}</h1>
       </div>
     </Card>
