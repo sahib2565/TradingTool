@@ -7,13 +7,14 @@ import Chart from "./Chart";
 import ThemeContext from "../context/ThemeContext";
 import StockContext from "../context/StockContext";
 import { UserIcon } from "@heroicons/react/solid";
-import { fetchOverViewData } from "../api/stock-api";
+import { fetchDetailsData, fetchOverViewData } from "../api/stock-api";
 
 const Dashboard = () => {
   const { darkMode } = useContext(ThemeContext);
   const { stockSymbol } = useContext(StockContext);
 
   const [quote, setQuote] = useState({});
+  const [details, setDetail] = useState({});
 
   useEffect(() => {
     const updateStockOveview = async () => {
@@ -27,7 +28,17 @@ const Dashboard = () => {
         console.log(error);
       }
     };
-
+    const updateDetailsData = async () => {
+      try{
+        const details = await fetchDetailsData(stockSymbol);
+        setDetail(details);
+      }
+      catch (error){
+        setDetail({});
+        console.log(error);
+      }
+    };
+    updateDetailsData();
     updateStockOveview();
   }, [stockSymbol])
   return (
@@ -52,7 +63,7 @@ const Dashboard = () => {
         />
       </div>
       <div className="row-span-2 xl:row-span-3">
-        <Details details={mockCompanyDetails} />
+        <Details details={details} />
       </div>
     </div>
   );

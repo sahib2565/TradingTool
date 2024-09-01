@@ -15,5 +15,12 @@ def getOverviewData(ticker):
 
     return overViewInfo, 200
 
+@app.route("/details/<ticker>")
+def getDetailsData(ticker):
+    detailInfo = stock.details_data(ticker)
+
+    return detailInfo, 200
+
+
 if __name__ == "__main__":
     app.run(debug=True)

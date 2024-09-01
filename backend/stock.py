@@ -43,6 +43,18 @@ def overview_data(ticker):
     return data
 
 
+def details_data(ticker):
+    stock = yfinance.Ticker(ticker)
+    data = {}
+    data['name'] = stock.info['longName']
+    data['country'] = stock.info['country']
+    data['currency'] = "USD"
+
+    data = json.dumps(data)
+
+    return data
+
+
 
 
 

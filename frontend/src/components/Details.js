@@ -10,9 +10,9 @@ const Details = ({ details }) => {
   const [change, setChange] = useState(0);
 
   const detailsList = {
-    name: "Name",
-    country: "Country",
-    currency: "Currency",
+    name: "name",
+    country: "country",
+    currency: "currency",
     // Price: "B/S Price",
     //ipo: "IPO Date",
     //marketCapitalization: "Market Capitalization",
