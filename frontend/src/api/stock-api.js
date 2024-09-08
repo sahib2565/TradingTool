@@ -45,6 +45,6 @@ export const fetchDetailsData = async (
         };
 
         return await response.json();
-    };
+};
 
 
