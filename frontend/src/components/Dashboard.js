@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import Header from "./Header";
-import { mockCompanyDetails, mockStockQuote } from "../constants/mock";
+import { mockCompanyDetails} from "../constants/mock";
 import Details from "./Details";
 import Overview from "./Overview";
 import Chart from "./Chart";
 import ThemeContext from "../context/ThemeContext";
 import StockContext from "../context/StockContext";
-import { UserIcon } from "@heroicons/react/solid";
 import { fetchDetailsData, fetchOverViewData } from "../api/stock-api";
 
 const Dashboard = () => {
@@ -21,7 +20,6 @@ const Dashboard = () => {
       try{
         const result = await fetchOverViewData(stockSymbol);
         setQuote(result);
-        console.log(quote.p);
       }
       catch (error){
         setQuote({});
