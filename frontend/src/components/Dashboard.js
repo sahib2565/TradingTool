@@ -57,7 +57,7 @@ const Dashboard = () => {
         <Overview
           symbol={stockSymbol}
           price={quote.p}
-          change={mockStockQuote.d}
+          change={quote.c}
           changePercent={quote.cp}
           currency={mockCompanyDetails.currency}
         />

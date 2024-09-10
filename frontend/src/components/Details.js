@@ -13,10 +13,6 @@ const Details = ({ details }) => {
     name: "name",
     country: "country",
     currency: "currency",
-    // Price: "B/S Price",
-    //ipo: "IPO Date",
-    //marketCapitalization: "Market Capitalization",
-    //finnhubIndustry: "Industry",
   };
 
   const calculateTarget = (value) => {
