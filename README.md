@@ -63,7 +63,7 @@ npm start
 ```
 ### Some Error
 
-If you are some error visualizing the stock AKA the API is not loading any data make sure to check that API has indeed started and if that is indeed the case you might have to change this part of the code inside
+If you are having some error visualizing the stock AKA the API is not loading any data, make sure to check that API has indeed started and if that is the case you might have to change this part of the code:
 ```javascript
 const basePath = 'http://127.0.0.1:5000' // Change the URL to your backend server
 ```
